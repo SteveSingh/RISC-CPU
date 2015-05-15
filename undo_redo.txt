@@ -1,0 +1,35 @@
+MED
+C:\Users\Steve\Desktop\Courses\W2013\COE 608\Labs\Lab 6\Project\CPU TEST Sim\CPU_Test_Sim.mif
+
+	Undo Commands
+	     1.	Cells
+	     2.	Cells
+	     3.	Cells
+	     4.	Cells
+	     5.	Cells
+	     6.	Cells
+	     7.	Cells
+	     8.	Cells
+	     9.	Change Memory Radix
+
+
+WED
+
+	Undo Commands
+	     1.	Drop Node
+			 *** 
+	     2.	Drop Node
+			 *** 
+	     3.	Drop Node
+			 *** 
+	     4.	Drop Node
+			 *** 
+	     5.	Clock
+
+
+RPW
+
+	Undo Commands
+	     1.	||Simulation Report||Simulator||Simulation Waveforms
+
+

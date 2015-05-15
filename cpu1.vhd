@@ -1,0 +1,200 @@
+library ieee;
+use ieee.std_logic_1164.all;
+			
+ENTITY cpu1 IS
+
+PORT
+(		
+-- Input ports
+clk		: in	std_logic;
+mem_clk	: in	std_logic;
+rst		: in	std_logic;
+dataIn	: in	std_logic_vector(31 downto 0);
+
+-- Output ports
+dataOut		: out	std_logic_vector(31 downto 0);
+addrOut		: out	std_logic_vector(31 downto 0);
+wEn 		: out	std_logic;
+
+-- Debug data.
+dOutA, dOutB	: out	std_logic_vector(31 downto 0);
+dOutC, dOutZ	: out	std_logic;
+dOutIR			: out	std_logic_vector(31 downto 0);
+dOutPC			: out	std_logic_vector(31 downto 0);
+outT			: out	std_logic_vector(2 downto 0);
+wen_mem, en_mem : out 	std_logic
+);
+
+END cpu1;
+
+ARCHITECTURE Description OF cpu1 IS
+
+-------------- COMPONENT DECLARATIONS --------------
+
+COMPONENT reset_circuit
+PORT
+(
+Reset 			: IN STD_LOGIC; 
+Clk 			: IN STD_LOGIC; 
+Enable_PD 		: OUT STD_LOGIC; 
+Clr_PC 			: OUT STD_LOGIC 
+);
+END COMPONENT;
+
+
+COMPONENT control
+
+PORT( 
+clk, mclk 				: IN STD_LOGIC;
+enable 					: IN STD_LOGIC;
+statusC, statusZ 		: IN STD_LOGIC;
+INST 					: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+PC_Mux 					: OUT STD_LOGIC;
+IM_MUX1, REG_Mux 		: OUT STD_LOGIC;
+IM_MUX2, DATA_Mux 		: OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+ALU_op 					: OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+inc_PC, ld_PC 			: OUT STD_LOGIC;
+clr_IR 					: OUT STD_LOGIC;
+ld_IR 					: OUT STD_LOGIC;
+clr_A,clr_B,clr_C,clr_Z	: OUT STD_LOGIC;
+ld_A, ld_B, ld_C, ld_Z 	: OUT STD_LOGIC;
+T 						: OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+wen, en 				: OUT STD_LOGIC
+);
+END COMPONENT;
+
+COMPONENT DATAPATH 
+
+PORT
+( 
+Clk, mClk  		: IN STD_LOGIC;  
+WEN, EN 		: IN STD_LOGIC;
+Clr_A , Ld_A  	: IN STD_LOGIC; 
+Clr_B , Ld_B   	: IN STD_LOGIC;	
+Clr_C , Ld_C  	: IN STD_LOGIC;	
+Clr_Z , Ld_Z   	: IN STD_LOGIC;	
+Clr_PC , Ld_PC	: IN STD_LOGIC; 
+Clr_IR , Ld_IR 	: IN STD_LOGIC; 
+Inc_PC	 		: IN STD_LOGIC;
+DATA_IN  		: IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+DATA_Mux 		: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+REG_Mux  		: IN STD_LOGIC;
+PC_Mux   		: IN STD_LOGIC;
+IM_MUX1  		: IN STD_LOGIC;
+IM_MUX2  		: IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+ALU_Op 			: IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+Out_A 			: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+Out_B  			: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+Out_C  			: OUT STD_LOGIC;
+Out_Z  			: OUT STD_LOGIC;
+Out_PC 			: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+Out_IR 			: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+ADDR_OUT 		: OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+DATA_OUT 		: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+);
+END COMPONENT;
+
+
+-------- INTERNAL SIGNAL DECLARATIONS --------
+
+SIGNAL enable_ctrl, ctrl_en, ctrl_wen, loadA, loadB, loadC, loadZ, loadIR, clearA  : STD_LOGIC;
+SIGNAL clearB, clearC, clearZ, clearIR, clearPC, loadPC, incPC, carry_out, z_out : STD_LOGIC;
+SIGNAL regMux, pcMux, imMux1, en_i, wen_i : STD_LOGIC;
+SIGNAL imMux2, dMux: STD_LOGIC_VECTOR(1 DOWNTO 0);
+SIGNAL ALU_operation: STD_LOGIC_VECTOR(2 DOWNTO 0);
+
+BEGIN
+
+
+en_mem <= en_i;
+wen_mem <= wen_i;
+wEn <= wen_i;
+
+
+-------- PORT MAPS --------
+
+--== Reset circuit ==--
+
+	reset : reset_circuit
+	PORT MAP 
+		(
+		Reset => rst,
+		Clk => clk,
+		Enable_PD => enable_ctrl,
+		Clr_PC => clearPC
+		);
+		
+--== Control Unit ==--
+
+	control_unit : control
+	PORT MAP 
+		(
+		clk => clk,
+		mclk => mem_clk,
+		enable => enable_ctrl,
+		statusC => carry_out,
+		statusZ => z_out,
+		INST => dataIn,		
+		PC_Mux => pcMux,
+		IM_MUX1 => imMux1,
+		REG_Mux => regMux,
+		IM_MUX2 => imMux2,
+		DATA_Mux => dMux,
+		ALU_op => ALU_operation,
+		inc_PC => incPC,
+		ld_PC => loadPC,
+		clr_IR => clearIR,
+		ld_IR => loadIR,
+		clr_A => clearA,
+		clr_B => clearB,
+		clr_C => clearC,
+		clr_Z => clearZ,
+		ld_A => loadA,
+		ld_B => loadB,
+		ld_C => loadC,
+		ld_Z => loadZ,
+		T => outT,
+		wen => wen_i,
+		en => en_i);
+
+ --== Outputs of the control unit ==--
+--== become inputs to the datapath ==--
+
+	path : datapath
+	PORT MAP (
+		Clk => clk,
+		mClk => mem_clk,
+		WEN => wen_i,
+		EN => en_i,
+		Clr_A => clearA,
+		Ld_A => loadA,
+		Clr_B => clearB,
+		Ld_B => loadB,
+		Clr_C => clearC,
+		Ld_C => loadC,
+		Clr_Z => clearZ,
+		Ld_Z => loadZ,
+		Clr_PC => clearPC,
+		Ld_PC => loadPC,
+		Clr_IR => clearIR,
+		Ld_IR => loadIR,
+		Out_A => dOutA,
+		Out_B => dOutB,
+		Out_C => carry_out,
+		Out_Z => z_out,
+		Out_PC => dOutPC,
+		Out_IR => dOutIR,
+		Inc_PC => incPC,
+		ADDR_OUT => addrOut,
+		DATA_IN => dataIn,	
+		DATA_OUT => dataOut,
+		DATA_Mux => dMux,
+		REG_Mux => regMux,
+		PC_Mux => pcMux,
+		IM_MUX1 => imMux1,
+		IM_MUX2 => imMux2,
+		ALU_Op => ALU_operation
+		);
+
+
+END Description;

@@ -1,0 +1,1235 @@
+Analysis & Synthesis report for CPU_Test_Sim
+Wed Apr 03 20:57:43 2013
+Quartus II Version 9.1 Build 222 10/21/2009 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|present_state
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated
+ 16. Source assignments for cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated
+ 17. Source assignments for cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated|altsyncram_51i1:altsyncram1
+ 18. Parameter Settings for User Entity Instance: system_memory:main_memory|altsyncram:altsyncram_component
+ 19. Parameter Settings for User Entity Instance: cpu1:main_processor|datapath:path|pc:PCMap
+ 20. Parameter Settings for User Entity Instance: cpu1:main_processor|datapath:path|data_mem:Mem
+ 21. Parameter Settings for Inferred Entity Instance: cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0
+ 22. altsyncram Parameter Settings by Entity Instance
+ 23. Port Connectivity Checks: "cpu1:main_processor|datapath:path|Register_B:RegB"
+ 24. Port Connectivity Checks: "cpu1:main_processor|datapath:path|Register_A:RegA"
+ 25. Port Connectivity Checks: "cpu1:main_processor"
+ 26. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++------------------------------------+-----------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Apr 03 20:57:43 2013   ;
+; Quartus II Version                 ; 9.1 Build 222 10/21/2009 SJ Web Edition ;
+; Revision Name                      ; CPU_Test_Sim                            ;
+; Top-level Entity Name              ; CPU_TEST_Sim                            ;
+; Family                             ; Cyclone II                              ;
+; Total logic elements               ; 679                                     ;
+;     Total combinational functions  ; 629                                     ;
+;     Dedicated logic registers      ; 156                                     ;
+; Total registers                    ; 156                                     ;
+; Total pins                         ; 209                                     ;
+; Total virtual pins                 ; 0                                       ;
+; Total memory bits                  ; 6,144                                   ;
+; Embedded Multiplier 9-bit elements ; 0                                       ;
+; Total PLLs                         ; 0                                       ;
++------------------------------------+-----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; CPU_TEST_Sim       ; CPU_Test_Sim       ;
+; Family name                                                                ; Cyclone II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                    ; Off                ;                    ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 100                ; 100                ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
++----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                                        ;
++----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------------------------------------+
+; CPU_TEST_Sim.vhd                 ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/CPU_TEST_Sim.vhd       ;
+; CPU_Test_Sim.mif                 ; yes             ; User Memory Initialization File  ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/CPU_Test_Sim.mif       ;
+; cpu1.vhd                         ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/cpu1.vhd               ;
+; control.vhd                      ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/control.vhd            ;
+; system_memory.vhd                ; yes             ; User Wizard-Generated File       ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/system_memory.vhd      ;
+; DATAPATH.vhd                     ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/DATAPATH.vhd           ;
+; ALU.vhd                          ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/ALU.vhd                ;
+; c_l_adder.vhd                    ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/c_l_adder.vhd          ;
+; c_l_subber.vhd                   ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/c_l_subber.vhd         ;
+; data_mem.vhd                     ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/data_mem.vhd           ;
+; PC.vhd                           ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/PC.vhd                 ;
+; Register_A.vhd                   ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/Register_A.vhd         ;
+; Register_B.vhd                   ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/Register_B.vhd         ;
+; Register_C.vhd                   ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/Register_C.vhd         ;
+; Register_IR.vhd                  ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/Register_IR.vhd        ;
+; Register_Z.vhd                   ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/Register_Z.vhd         ;
+; Register32.vhd                   ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/Register32.vhd         ;
+; reset_circuit.vhd                ; yes             ; User VHDL File                   ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/reset_circuit.vhd      ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/altera/91/quartus/libraries/megafunctions/altsyncram.tdf                                         ;
+; db/altsyncram_lhd1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/db/altsyncram_lhd1.tdf ;
+; db/altsyncram_3ee1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/db/altsyncram_3ee1.tdf ;
+; db/altsyncram_51i1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Steve/Desktop/Courses/W2013/COE 608/Labs/Lab 6/Project/CPU TEST Sim/db/altsyncram_51i1.tdf ;
++----------------------------------+-----------------+----------------------------------+-----------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 679    ;
+;                                             ;        ;
+; Total combinational functions               ; 629    ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 353    ;
+;     -- 3 input functions                    ; 148    ;
+;     -- <=2 input functions                  ; 128    ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 567    ;
+;     -- arithmetic mode                      ; 62     ;
+;                                             ;        ;
+; Total registers                             ; 156    ;
+;     -- Dedicated logic registers            ; 156    ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 209    ;
+; Total memory bits                           ; 6144   ;
+; Maximum fan-out node                        ; cpuClk ;
+; Maximum fan-out                             ; 157    ;
+; Total fan-out                               ; 3465   ;
+; Average fan-out                             ; 3.33   ;
++---------------------------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                             ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |CPU_TEST_Sim                                   ; 629 (0)           ; 156 (0)      ; 6144        ; 0            ; 0       ; 0         ; 209  ; 0            ; |CPU_TEST_Sim                                                                                                                                      ; work         ;
+;    |cpu1:main_processor|                        ; 629 (0)           ; 156 (0)      ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor                                                                                                                  ; work         ;
+;       |control:control_unit|                    ; 93 (93)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|control:control_unit                                                                                             ;              ;
+;       |datapath:path|                           ; 490 (112)         ; 114 (0)      ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path                                                                                                    ;              ;
+;          |ALU:ALUMap|                           ; 311 (233)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|ALU:ALUMap                                                                                         ;              ;
+;             |c_l_adder:add|                     ; 32 (32)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add                                                                           ;              ;
+;             |c_l_subber:sub|                    ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub                                                                          ;              ;
+;          |Register_A:RegA|                      ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Register_A:RegA                                                                                    ;              ;
+;          |Register_B:RegB|                      ; 0 (0)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Register_B:RegB                                                                                    ;              ;
+;          |Register_C:RegC|                      ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Register_C:RegC                                                                                    ;              ;
+;          |Register_IR:IR|                       ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Register_IR:IR                                                                                     ;              ;
+;          |Register_Z:RegZ|                      ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Register_Z:RegZ                                                                                    ;              ;
+;          |data_mem:Mem|                         ; 1 (1)             ; 16 (16)      ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|data_mem:Mem                                                                                       ;              ;
+;             |altsyncram:mem_array_rtl_0|        ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0                                                            ;              ;
+;                |altsyncram_3ee1:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated                             ;              ;
+;                   |altsyncram_51i1:altsyncram1| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated|altsyncram_51i1:altsyncram1 ;              ;
+;          |pc:PCMap|                             ; 64 (64)           ; 32 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|pc:PCMap                                                                                           ;              ;
+;             |register32:mapreg|                 ; 0 (0)             ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|pc:PCMap|register32:mapreg                                                                         ;              ;
+;       |reset_circuit:reset|                     ; 46 (46)           ; 34 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|cpu1:main_processor|reset_circuit:reset                                                                                              ;              ;
+;    |system_memory:main_memory|                  ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|system_memory:main_memory                                                                                                            ;              ;
+;       |altsyncram:altsyncram_component|         ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|system_memory:main_memory|altsyncram:altsyncram_component                                                                            ; work         ;
+;          |altsyncram_lhd1:auto_generated|       ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_TEST_Sim|system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated                                             ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                              ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------------------+
+; Name                                                                                                                                            ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF              ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------------------+
+; cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated|altsyncram_51i1:altsyncram1|ALTSYNCRAM ; AUTO ; True Dual Port ; 256          ; 16           ; 256          ; 16           ; 4096 ; None             ;
+; system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|ALTSYNCRAM                                             ; AUTO ; Single Port    ; 64           ; 32           ; --           ; --           ; 2048 ; CPU_Test_Sim.mif ;
++-------------------------------------------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------+
+; State Machine - |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|present_state          ;
++-----------------------+-----------------------+-----------------------+-----------------------+
+; Name                  ; present_state.state_2 ; present_state.state_1 ; present_state.state_0 ;
++-----------------------+-----------------------+-----------------------+-----------------------+
+; present_state.state_0 ; 0                     ; 0                     ; 0                     ;
+; present_state.state_1 ; 0                     ; 1                     ; 1                     ;
+; present_state.state_2 ; 1                     ; 0                     ; 1                     ;
++-----------------------+-----------------------+-----------------------+-----------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                    ;
++----------------------------------------------------------+----------------------------------------------------+------------------------+
+; Latch Name                                               ; Latch Enable Signal                                ; Free of Timing Hazards ;
++----------------------------------------------------------+----------------------------------------------------+------------------------+
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[0]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|control:control_unit|DATA_Mux[1]     ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|DATA_Mux[0]     ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[1]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[2]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[3]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[4]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[5]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[6]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[7]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[8]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[9]  ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[10] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[11] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[12] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[13] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[14] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[15] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[16] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[17] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[18] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[19] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[20] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[21] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[22] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[23] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[24] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[25] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[26] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[27] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[28] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[29] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[30] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux2  ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|result2[31] ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux0  ; yes                    ;
+; cpu1:main_processor|control:control_unit|clr_A           ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|ld_A            ; cpu1:main_processor|control:control_unit|REG_Mux   ; yes                    ;
+; cpu1:main_processor|control:control_unit|clr_B           ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|ld_B            ; cpu1:main_processor|control:control_unit|REG_Mux   ; yes                    ;
+; cpu1:main_processor|control:control_unit|ld_IR           ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|inc_PC          ; cpu1:main_processor|control:control_unit|PC_Mux    ; no                     ;
+; cpu1:main_processor|control:control_unit|ld_PC           ; cpu1:main_processor|control:control_unit|PC_Mux    ; no                     ;
+; cpu1:main_processor|control:control_unit|PC_Mux          ; cpu1:main_processor|control:control_unit|PC_Mux    ; no                     ;
+; cpu1:main_processor|control:control_unit|ALU_op[2]       ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|ALU_op[0]       ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|IM_MUX1         ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|IM_MUX2[1]      ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|IM_MUX2[0]      ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|Cin         ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux37 ; yes                    ;
+; cpu1:main_processor|control:control_unit|ALU_op[1]       ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|REG_Mux         ; cpu1:main_processor|control:control_unit|REG_Mux   ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|cout        ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux39 ; yes                    ;
+; cpu1:main_processor|control:control_unit|ld_C            ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|clr_C           ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|datapath:path|ALU:ALUMap|zero        ; cpu1:main_processor|datapath:path|ALU:ALUMap|Mux33 ; yes                    ;
+; cpu1:main_processor|control:control_unit|ld_Z            ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; cpu1:main_processor|control:control_unit|clr_Z           ; cpu1:main_processor|control:control_unit|PC_Mux    ; yes                    ;
+; Number of user-specified and inferred latches = 56       ;                                                    ;                        ;
++----------------------------------------------------------+----------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                       ;
++-----------------------------------------------------------------+----------------------------------------+
+; Register name                                                   ; Reason for Removal                     ;
++-----------------------------------------------------------------+----------------------------------------+
+; cpu1:main_processor|datapath:path|Register_B:RegB|Q2[16..31]    ; Stuck at GND due to stuck port data_in ;
+; cpu1:main_processor|datapath:path|Register_A:RegA|Q2[16..31]    ; Stuck at GND due to stuck port data_in ;
+; cpu1:main_processor|datapath:path|data_mem:Mem|data_out[16..31] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 48                          ;                                        ;
++-----------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 156   ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 73    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 146   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------+
+; Inverted Register Statistics                                  ;
++-----------------------------------------------------+---------+
+; Inverted Register                                   ; Fan out ;
++-----------------------------------------------------+---------+
+; cpu1:main_processor|control:control_unit|T[0]       ; 1       ;
+; cpu1:main_processor|reset_circuit:reset|Enable_PD_i ; 23      ;
+; Total number of inverted registers = 2              ;         ;
++-----------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|pc:PCMap|register32:mapreg|Q[10] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|T[1]                      ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|en                        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Mux10                            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Mux20                            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|Mux50                            ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|clr_Z                     ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|present_state             ;
+; 7:1                ; 29 bits   ; 116 LEs       ; 116 LEs              ; 0 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|datapath:path|ALU:ALUMap|Mux21                 ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; No         ; |CPU_TEST_Sim|cpu1:main_processor|control:control_unit|IM_MUX2[0]                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Source assignments for system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                ;
++---------------------------------+--------------------+------+---------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                 ;
++---------------------------------+--------------------+------+---------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                 ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0|altsyncram_3ee1:auto_generated|altsyncram_51i1:altsyncram1 ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                            ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                             ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: system_memory:main_memory|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+--------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                       ;
++------------------------------------+----------------------+--------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                    ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                               ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                             ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                    ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                                    ;
+; WIDTH_A                            ; 32                   ; Signed Integer                             ;
+; WIDTHAD_A                          ; 6                    ; Signed Integer                             ;
+; NUMWORDS_A                         ; 64                   ; Signed Integer                             ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                    ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                    ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                    ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                    ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                    ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                    ;
+; WIDTH_B                            ; 1                    ; Untyped                                    ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                    ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                    ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                    ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                    ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                    ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                    ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                    ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                    ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                    ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                    ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                    ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                    ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                             ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                    ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                    ;
+; INIT_FILE                          ; CPU_Test_Sim.mif     ; Untyped                                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                    ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                    ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                    ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                    ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                    ;
+; CBXI_PARAMETER                     ; altsyncram_lhd1      ; Untyped                                    ;
++------------------------------------+----------------------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu1:main_processor|datapath:path|pc:PCMap ;
++----------------+-------+----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                           ;
++----------------+-------+----------------------------------------------------------------+
+; X              ; 1     ; Signed Integer                                                 ;
++----------------+-------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cpu1:main_processor|datapath:path|data_mem:Mem ;
++----------------+-------+--------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                               ;
++----------------+-------+--------------------------------------------------------------------+
+; address_width  ; 8     ; Signed Integer                                                     ;
+; data_width     ; 32    ; Signed Integer                                                     ;
++----------------+-------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0 ;
++------------------------------------+----------------------+----------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                           ;
++------------------------------------+----------------------+----------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                        ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                                        ;
+; WIDTH_A                            ; 16                   ; Untyped                                                        ;
+; WIDTHAD_A                          ; 8                    ; Untyped                                                        ;
+; NUMWORDS_A                         ; 256                  ; Untyped                                                        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                        ;
+; WIDTH_B                            ; 16                   ; Untyped                                                        ;
+; WIDTHAD_B                          ; 8                    ; Untyped                                                        ;
+; NUMWORDS_B                         ; 256                  ; Untyped                                                        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                        ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                                        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                        ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                        ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                                        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                        ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped                                                        ;
+; CBXI_PARAMETER                     ; altsyncram_3ee1      ; Untyped                                                        ;
++------------------------------------+----------------------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                      ;
++-------------------------------------------+---------------------------------------------------------------------------+
+; Name                                      ; Value                                                                     ;
++-------------------------------------------+---------------------------------------------------------------------------+
+; Number of entity instances                ; 2                                                                         ;
+; Entity Instance                           ; system_memory:main_memory|altsyncram:altsyncram_component                 ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                                               ;
+;     -- WIDTH_A                            ; 32                                                                        ;
+;     -- NUMWORDS_A                         ; 64                                                                        ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                              ;
+;     -- WIDTH_B                            ; 1                                                                         ;
+;     -- NUMWORDS_B                         ; 1                                                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                 ;
+; Entity Instance                           ; cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                                                 ;
+;     -- WIDTH_A                            ; 16                                                                        ;
+;     -- NUMWORDS_A                         ; 256                                                                       ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                              ;
+;     -- WIDTH_B                            ; 16                                                                        ;
+;     -- NUMWORDS_B                         ; 256                                                                       ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                 ;
++-------------------------------------------+---------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu1:main_processor|datapath:path|Register_B:RegB" ;
++-----------+-------+----------+------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                        ;
++-----------+-------+----------+------------------------------------------------+
+; d[31..16] ; Input ; Info     ; Stuck at GND                                   ;
++-----------+-------+----------+------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu1:main_processor|datapath:path|Register_A:RegA" ;
++-----------+-------+----------+------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                        ;
++-----------+-------+----------+------------------------------------------------+
+; d[31..16] ; Input ; Info     ; Stuck at GND                                   ;
++-----------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu1:main_processor"                                                                          ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; addrout[31..6] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.1 Build 222 10/21/2009 SJ Web Edition
+    Info: Processing started: Wed Apr 03 20:57:38 2013
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU_Test_Sim -c CPU_Test_Sim
+Info: Found 2 design units, including 1 entities, in source file cpu_test_sim.vhd
+    Info: Found design unit 1: CPU_TEST_Sim-behavior
+    Info: Found entity 1: CPU_TEST_Sim
+Info: Found 2 design units, including 1 entities, in source file cpu1.vhd
+    Info: Found design unit 1: cpu1-Description
+    Info: Found entity 1: cpu1
+Info: Found 2 design units, including 1 entities, in source file control.vhd
+    Info: Found design unit 1: control-description
+    Info: Found entity 1: control
+Info: Found 2 design units, including 1 entities, in source file system_memory.vhd
+    Info: Found design unit 1: system_memory-SYN
+    Info: Found entity 1: system_memory
+Info: Found 2 design units, including 1 entities, in source file datapath.vhd
+    Info: Found design unit 1: datapath-description
+    Info: Found entity 1: datapath
+Info: Found 2 design units, including 1 entities, in source file alu.vhd
+    Info: Found design unit 1: ALU-description
+    Info: Found entity 1: ALU
+Info: Found 2 design units, including 1 entities, in source file c_l_adder.vhd
+    Info: Found design unit 1: c_l_adder-behavioral
+    Info: Found entity 1: c_l_adder
+Info: Found 2 design units, including 1 entities, in source file c_l_subber.vhd
+    Info: Found design unit 1: c_l_subber-behavioral
+    Info: Found entity 1: c_l_subber
+Info: Found 2 design units, including 1 entities, in source file data_mem.vhd
+    Info: Found design unit 1: data_mem-Description
+    Info: Found entity 1: data_mem
+Info: Found 2 design units, including 1 entities, in source file pc.vhd
+    Info: Found design unit 1: pc-func
+    Info: Found entity 1: pc
+Info: Found 2 design units, including 1 entities, in source file register_a.vhd
+    Info: Found design unit 1: Register_A-descript32
+    Info: Found entity 1: Register_A
+Info: Found 2 design units, including 1 entities, in source file register_b.vhd
+    Info: Found design unit 1: Register_B-descript32
+    Info: Found entity 1: Register_B
+Info: Found 2 design units, including 1 entities, in source file register_c.vhd
+    Info: Found design unit 1: Register_C-descript1
+    Info: Found entity 1: Register_C
+Info: Found 2 design units, including 1 entities, in source file register_ir.vhd
+    Info: Found design unit 1: Register_IR-descript32
+    Info: Found entity 1: Register_IR
+Info: Found 2 design units, including 1 entities, in source file register_z.vhd
+    Info: Found design unit 1: Register_Z-descript1
+    Info: Found entity 1: Register_Z
+Info: Found 2 design units, including 1 entities, in source file register32.vhd
+    Info: Found design unit 1: register32-descript32
+    Info: Found entity 1: register32
+Info: Found 2 design units, including 1 entities, in source file reset_circuit.vhd
+    Info: Found design unit 1: reset_circuit-description
+    Info: Found entity 1: reset_circuit
+Info: Elaborating entity "CPU_TEST_Sim" for the top level hierarchy
+Info: Elaborating entity "system_memory" for hierarchy "system_memory:main_memory"
+Info: Elaborating entity "altsyncram" for hierarchy "system_memory:main_memory|altsyncram:altsyncram_component"
+Info: Elaborated megafunction instantiation "system_memory:main_memory|altsyncram:altsyncram_component"
+Info: Instantiated megafunction "system_memory:main_memory|altsyncram:altsyncram_component" with the following parameter:
+    Info: Parameter "clock_enable_input_a" = "BYPASS"
+    Info: Parameter "clock_enable_output_a" = "BYPASS"
+    Info: Parameter "init_file" = "CPU_Test_Sim.mif"
+    Info: Parameter "intended_device_family" = "Cyclone II"
+    Info: Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info: Parameter "lpm_type" = "altsyncram"
+    Info: Parameter "numwords_a" = "64"
+    Info: Parameter "operation_mode" = "SINGLE_PORT"
+    Info: Parameter "outdata_aclr_a" = "NONE"
+    Info: Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info: Parameter "power_up_uninitialized" = "FALSE"
+    Info: Parameter "widthad_a" = "6"
+    Info: Parameter "width_a" = "32"
+    Info: Parameter "width_byteena_a" = "1"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_lhd1.tdf
+    Info: Found entity 1: altsyncram_lhd1
+Info: Elaborating entity "altsyncram_lhd1" for hierarchy "system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated"
+Info: Elaborating entity "cpu1" for hierarchy "cpu1:main_processor"
+Warning (10541): VHDL Signal Declaration warning at cpu1.vhd(21): used implicit default value for signal "dOutC" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at cpu1.vhd(21): used implicit default value for signal "dOutZ" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Info: Elaborating entity "reset_circuit" for hierarchy "cpu1:main_processor|reset_circuit:reset"
+Info: Elaborating entity "control" for hierarchy "cpu1:main_processor|control:control_unit"
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "clr_IR", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ld_IR", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ld_PC", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "inc_PC", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "clr_A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ld_A", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "clr_B", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ld_B", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "clr_C", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ld_C", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "clr_Z", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ld_Z", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "ALU_op", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "PC_Mux", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "REG_Mux", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "DATA_Mux", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "IM_MUX1", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at control.vhd(29): inferring latch(es) for signal or variable "IM_MUX2", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "IM_MUX2[0]" at control.vhd(29)
+Info (10041): Inferred latch for "IM_MUX2[1]" at control.vhd(29)
+Info (10041): Inferred latch for "IM_MUX1" at control.vhd(29)
+Info (10041): Inferred latch for "DATA_Mux[0]" at control.vhd(29)
+Info (10041): Inferred latch for "DATA_Mux[1]" at control.vhd(29)
+Info (10041): Inferred latch for "REG_Mux" at control.vhd(29)
+Info (10041): Inferred latch for "PC_Mux" at control.vhd(29)
+Info (10041): Inferred latch for "ALU_op[0]" at control.vhd(29)
+Info (10041): Inferred latch for "ALU_op[1]" at control.vhd(29)
+Info (10041): Inferred latch for "ALU_op[2]" at control.vhd(29)
+Info (10041): Inferred latch for "ld_Z" at control.vhd(29)
+Info (10041): Inferred latch for "clr_Z" at control.vhd(29)
+Info (10041): Inferred latch for "ld_C" at control.vhd(29)
+Info (10041): Inferred latch for "clr_C" at control.vhd(29)
+Info (10041): Inferred latch for "ld_B" at control.vhd(29)
+Info (10041): Inferred latch for "clr_B" at control.vhd(29)
+Info (10041): Inferred latch for "ld_A" at control.vhd(29)
+Info (10041): Inferred latch for "clr_A" at control.vhd(29)
+Info (10041): Inferred latch for "inc_PC" at control.vhd(29)
+Info (10041): Inferred latch for "ld_PC" at control.vhd(29)
+Info (10041): Inferred latch for "ld_IR" at control.vhd(29)
+Info (10041): Inferred latch for "clr_IR" at control.vhd(29)
+Info: Elaborating entity "datapath" for hierarchy "cpu1:main_processor|datapath:path"
+Warning (10540): VHDL Signal Declaration warning at DATAPATH.vhd(177): used explicit default value for signal "Zero_Vector" because signal was never assigned a value
+Warning (10492): VHDL Process Statement warning at DATAPATH.vhd(243): signal "IR_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at DATAPATH.vhd(244): signal "IR_UZE1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at DATAPATH.vhd(244): signal "Zero_Vector" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "Register_IR" for hierarchy "cpu1:main_processor|datapath:path|Register_IR:IR"
+Info: Elaborating entity "Register_A" for hierarchy "cpu1:main_processor|datapath:path|Register_A:RegA"
+Info: Elaborating entity "Register_B" for hierarchy "cpu1:main_processor|datapath:path|Register_B:RegB"
+Info: Elaborating entity "pc" for hierarchy "cpu1:main_processor|datapath:path|pc:PCMap"
+Info: Elaborating entity "register32" for hierarchy "cpu1:main_processor|datapath:path|pc:PCMap|register32:mapreg"
+Info: Elaborating entity "Register_C" for hierarchy "cpu1:main_processor|datapath:path|Register_C:RegC"
+Info: Elaborating entity "Register_Z" for hierarchy "cpu1:main_processor|datapath:path|Register_Z:RegZ"
+Info: Elaborating entity "ALU" for hierarchy "cpu1:main_processor|datapath:path|ALU:ALUMap"
+Warning (10492): VHDL Process Statement warning at ALU.vhd(65): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(65): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(73): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(73): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(82): signal "add_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(83): signal "cout_add" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(85): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(85): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(94): signal "sub_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(95): signal "cout_sub" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(97): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(97): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(121): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(121): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(132): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(132): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(140): signal "result2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ALU.vhd(140): signal "z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at ALU.vhd(57): inferring latch(es) for signal or variable "result2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at ALU.vhd(57): inferring latch(es) for signal or variable "zero", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at ALU.vhd(57): inferring latch(es) for signal or variable "enable", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at ALU.vhd(57): inferring latch(es) for signal or variable "Cin", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at ALU.vhd(57): inferring latch(es) for signal or variable "cout", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at ALU.vhd(57): inferring latch(es) for signal or variable "enable_sub", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "enable_sub" at ALU.vhd(57)
+Info (10041): Inferred latch for "cout" at ALU.vhd(57)
+Info (10041): Inferred latch for "Cin" at ALU.vhd(57)
+Info (10041): Inferred latch for "enable" at ALU.vhd(57)
+Info (10041): Inferred latch for "zero" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[0]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[1]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[2]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[3]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[4]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[5]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[6]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[7]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[8]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[9]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[10]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[11]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[12]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[13]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[14]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[15]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[16]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[17]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[18]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[19]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[20]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[21]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[22]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[23]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[24]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[25]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[26]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[27]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[28]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[29]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[30]" at ALU.vhd(57)
+Info (10041): Inferred latch for "result2[31]" at ALU.vhd(57)
+Info: Elaborating entity "c_l_adder" for hierarchy "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add"
+Warning (10492): VHDL Process Statement warning at c_l_adder.vhd(32): signal "carry_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at c_l_adder.vhd(29): inferring latch(es) for signal or variable "carry_in_internal", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "carry_in_internal[1]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[2]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[3]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[4]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[5]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[6]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[7]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[8]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[9]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[10]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[11]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[12]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[13]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[14]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[15]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[16]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[17]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[18]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[19]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[20]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[21]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[22]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[23]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[24]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[25]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[26]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[27]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[28]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[29]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[30]" at c_l_adder.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[31]" at c_l_adder.vhd(29)
+Info: Elaborating entity "c_l_subber" for hierarchy "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub"
+Warning (10492): VHDL Process Statement warning at c_l_subber.vhd(32): signal "carry_in" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at c_l_subber.vhd(29): inferring latch(es) for signal or variable "carry_in_internal", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "carry_in_internal[1]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[2]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[3]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[4]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[5]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[6]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[7]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[8]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[9]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[10]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[11]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[12]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[13]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[14]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[15]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[16]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[17]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[18]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[19]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[20]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[21]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[22]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[23]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[24]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[25]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[26]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[27]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[28]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[29]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[30]" at c_l_subber.vhd(29)
+Info (10041): Inferred latch for "carry_in_internal[31]" at c_l_subber.vhd(29)
+Info: Elaborating entity "data_mem" for hierarchy "cpu1:main_processor|datapath:path|data_mem:Mem"
+Warning (10492): VHDL Process Statement warning at data_mem.vhd(31): signal "en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at data_mem.vhd(31): signal "wen" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[2]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[3]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[4]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[5]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[6]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[7]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[8]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[9]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[10]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[11]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[12]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[13]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[14]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[15]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[16]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[17]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[18]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[19]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[20]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[21]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[22]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[23]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[24]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[25]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[26]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[27]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[28]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[29]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[30]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[31]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[1]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[2]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[3]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[4]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[5]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[6]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[7]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[8]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[9]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[10]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[11]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[12]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[13]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[14]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[15]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[16]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[17]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[18]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[19]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[20]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[21]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[22]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[23]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[24]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[25]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[26]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[27]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[28]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[29]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[30]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[31]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[1]" is permanently enabled
+Warning: Inferred dual-clock RAM node "cpu1:main_processor|datapath:path|data_mem:Mem|mem_array~41" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[1]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[1]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[2]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[2]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[3]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[3]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[4]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[4]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[5]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[5]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[6]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[6]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[7]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[7]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[8]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[8]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[9]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[9]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[10]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[10]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[11]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[11]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[12]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[12]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[13]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[13]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[14]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[14]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[15]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[15]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[16]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[16]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[17]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[17]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[18]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[18]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[19]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[19]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[20]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[20]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[21]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[21]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[22]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[22]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[23]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[23]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[24]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[24]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[25]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[25]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[26]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[26]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[27]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[27]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[28]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[28]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[29]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[29]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[30]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[30]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_adder:add|carry_in_internal[31]" is permanently enabled
+Warning: LATCH primitive "cpu1:main_processor|datapath:path|ALU:ALUMap|c_l_subber:sub|carry_in_internal[31]" is permanently enabled
+Info: Inferred 1 megafunctions from design logic
+    Info: Inferred altsyncram megafunction from the following design logic: "cpu1:main_processor|datapath:path|data_mem:Mem|mem_array~41" 
+        Info: Parameter OPERATION_MODE set to DUAL_PORT
+        Info: Parameter WIDTH_A set to 16
+        Info: Parameter WIDTHAD_A set to 8
+        Info: Parameter NUMWORDS_A set to 256
+        Info: Parameter WIDTH_B set to 16
+        Info: Parameter WIDTHAD_B set to 8
+        Info: Parameter NUMWORDS_B set to 256
+        Info: Parameter ADDRESS_ACLR_A set to NONE
+        Info: Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info: Parameter ADDRESS_ACLR_B set to NONE
+        Info: Parameter OUTDATA_ACLR_B set to NONE
+        Info: Parameter ADDRESS_REG_B set to CLOCK1
+        Info: Parameter INDATA_ACLR_A set to NONE
+        Info: Parameter WRCONTROL_ACLR_A set to NONE
+Info: Elaborated megafunction instantiation "cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0"
+Info: Instantiated megafunction "cpu1:main_processor|datapath:path|data_mem:Mem|altsyncram:mem_array_rtl_0" with the following parameter:
+    Info: Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info: Parameter "WIDTH_A" = "16"
+    Info: Parameter "WIDTHAD_A" = "8"
+    Info: Parameter "NUMWORDS_A" = "256"
+    Info: Parameter "WIDTH_B" = "16"
+    Info: Parameter "WIDTHAD_B" = "8"
+    Info: Parameter "NUMWORDS_B" = "256"
+    Info: Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info: Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info: Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info: Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info: Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info: Parameter "INDATA_ACLR_A" = "NONE"
+    Info: Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_3ee1.tdf
+    Info: Found entity 1: altsyncram_3ee1
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_51i1.tdf
+    Info: Found entity 1: altsyncram_51i1
+Info: Duplicate LATCH primitives merged into single LATCH primitive
+    Info: Duplicate LATCH primitive "cpu1:main_processor|control:control_unit|PC_Mux" merged with LATCH primitive "cpu1:main_processor|control:control_unit|inc_PC"
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[0] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[1]
+Warning: Latch cpu1:main_processor|control:control_unit|DATA_Mux[1] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|DATA_Mux[0] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[1] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[2] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[3] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[4] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[5] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[6] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[7] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[8] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[9] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[10] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[11] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[12] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[13] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[14] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[15] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[16] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[17] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[18] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[19] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[20] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[21] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[22] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[23] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[24] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[25] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[26] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[27] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[28] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[29] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[30] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|result2[31] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|control:control_unit|clr_A has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[27]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ld_A has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[31]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|clr_B has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ld_B has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[31]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ld_IR has unsafe behavior
+    Warning: Ports ENA and PRE on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|inc_PC has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[25]
+    Warning: Ports ENA and PRE on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ld_PC has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and PRE on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ALU_op[2] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[27]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ALU_op[0] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[27]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|IM_MUX1 has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|IM_MUX2[1] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[25]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|IM_MUX2[0] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[25]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|ALU_op[1] has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|REG_Mux has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|cout has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[0]
+Warning: Latch cpu1:main_processor|control:control_unit|ld_C has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|clr_C has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[27]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|datapath:path|ALU:ALUMap|zero has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|control:control_unit|ALU_op[1]
+Warning: Latch cpu1:main_processor|control:control_unit|ld_Z has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Warning: Latch cpu1:main_processor|control:control_unit|clr_Z has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal system_memory:main_memory|altsyncram:altsyncram_component|altsyncram_lhd1:auto_generated|q_a[27]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal cpu1:main_processor|reset_circuit:reset|Enable_PD_i
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "outA[16]" is stuck at GND
+    Warning (13410): Pin "outA[17]" is stuck at GND
+    Warning (13410): Pin "outA[18]" is stuck at GND
+    Warning (13410): Pin "outA[19]" is stuck at GND
+    Warning (13410): Pin "outA[20]" is stuck at GND
+    Warning (13410): Pin "outA[21]" is stuck at GND
+    Warning (13410): Pin "outA[22]" is stuck at GND
+    Warning (13410): Pin "outA[23]" is stuck at GND
+    Warning (13410): Pin "outA[24]" is stuck at GND
+    Warning (13410): Pin "outA[25]" is stuck at GND
+    Warning (13410): Pin "outA[26]" is stuck at GND
+    Warning (13410): Pin "outA[27]" is stuck at GND
+    Warning (13410): Pin "outA[28]" is stuck at GND
+    Warning (13410): Pin "outA[29]" is stuck at GND
+    Warning (13410): Pin "outA[30]" is stuck at GND
+    Warning (13410): Pin "outA[31]" is stuck at GND
+    Warning (13410): Pin "outB[16]" is stuck at GND
+    Warning (13410): Pin "outB[17]" is stuck at GND
+    Warning (13410): Pin "outB[18]" is stuck at GND
+    Warning (13410): Pin "outB[19]" is stuck at GND
+    Warning (13410): Pin "outB[20]" is stuck at GND
+    Warning (13410): Pin "outB[21]" is stuck at GND
+    Warning (13410): Pin "outB[22]" is stuck at GND
+    Warning (13410): Pin "outB[23]" is stuck at GND
+    Warning (13410): Pin "outB[24]" is stuck at GND
+    Warning (13410): Pin "outB[25]" is stuck at GND
+    Warning (13410): Pin "outB[26]" is stuck at GND
+    Warning (13410): Pin "outB[27]" is stuck at GND
+    Warning (13410): Pin "outB[28]" is stuck at GND
+    Warning (13410): Pin "outB[29]" is stuck at GND
+    Warning (13410): Pin "outB[30]" is stuck at GND
+    Warning (13410): Pin "outB[31]" is stuck at GND
+    Warning (13410): Pin "outC" is stuck at GND
+    Warning (13410): Pin "outZ" is stuck at GND
+Info: Implemented 969 device resources after synthesis - the final resource count might be different
+    Info: Implemented 3 input pins
+    Info: Implemented 206 output pins
+    Info: Implemented 712 logic cells
+    Info: Implemented 48 RAM segments
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 341 warnings
+    Info: Peak virtual memory: 255 megabytes
+    Info: Processing ended: Wed Apr 03 20:57:43 2013
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:06
+
+
